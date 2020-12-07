@@ -1,6 +1,7 @@
 cache/
 bin/
 gomi/
+demo/
 wasm_sdl01/test/wasm_sdl01.js
 wasm_sdl01/test/wasm_sdl01.wasm
 wasm_sdl02/test/wasm_sdl02.data
