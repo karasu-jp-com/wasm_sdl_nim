@@ -11,7 +11,14 @@ https://karasu.www2.jp/nim_webasm2/
 
 ## wasm_sdl02
 [Live Demo](https://karasu-jp-com.github.io/wasm_sdl_nim/wasm_sdl02/)  
-SDL_IMAGE を使用して PNG画像の読込と描画
+SDL_IMAGE を使用して PNG画像の読込と描画(preload-file使用版)
 
 解説は以下サイトを参照  
 https://karasu.www2.jp/nim_webasm3/
+
+## wasm_sdl03
+[Live Demo](https://karasu-jp-com.github.io/wasm_sdl_nim/wasm_sdl03/)  
+SDL_IMAGE を使用して PNG画像の読込と描画(emscripten_async_wget_data使用版)
+
+解説は以下サイトを参照  
+https://karasu.www2.jp/nim_webasm5/
