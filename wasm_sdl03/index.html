@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Nim と Emscripten で WebAssemblyを作って Canvasに出力するサンプル02</title>
+</head>
+<body>
+	<canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+	<script>
+	var Module = {
+		canvas: (function() { return document.getElementById('canvas'); })()
+	};
+	</script>
+	<script src="wasm_sdl03.js"></script>
+</body>
+</html>
