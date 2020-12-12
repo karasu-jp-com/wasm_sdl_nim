@@ -12,6 +12,13 @@
 			"label": "Build Debug wasm_sdl02.nim",
 			"type": "shell",
 			"command": "nim ./wasm_sdl02/build.nims",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Debug wasm_sdl03.nim",
+			"type": "shell",
+			"command": "nim ./wasm_sdl03/build.nims",
 			"group": {
 				"kind": "build",
 				"isDefault": true
