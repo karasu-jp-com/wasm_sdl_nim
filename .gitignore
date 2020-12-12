@@ -7,3 +7,5 @@ wasm_sdl01/test/wasm_sdl01.wasm
 wasm_sdl02/test/wasm_sdl02.data
 wasm_sdl02/test/wasm_sdl02.js
 wasm_sdl02/test/wasm_sdl02.wasm
+wasm_sdl03/test/wasm_sdl03.js
+wasm_sdl03/test/wasm_sdl03.wasm
