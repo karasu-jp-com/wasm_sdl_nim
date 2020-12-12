@@ -12,6 +12,7 @@ var
   renderer:sdl2.RendererPtr
   kani:TexturePtr
   logo:TexturePtr
+  # メインループで呼出される処理(初回は loadData)
   mainLoop:proc() = loadData
 
 #######################################
@@ -53,10 +54,12 @@ proc loadData() =
   var loadCount = 0
   proc loadSuccess(tex: var TexturePtr, data: pointer, sz: cint)
 
+  # ロードが完了するまでは、メインループでは何もしない
   mainLoop = proc() = discard
 
   discard sdl2.createWindowAndRenderer(cScr_w, cScr_h, 0, window, renderer)
 
+  # kani.pngの読込
   emscripten_async_wget_data("../../assets/kani.png"
     , proc(data: pointer, sz: cint) =
         echo "emscripten_async_wget_data Success. kani.png"
@@ -65,6 +68,7 @@ proc loadData() =
         echo "emscripten_async_wget_data Falt. kani.png"
   )
 
+  # nim_sdl_test.pngの読込
   emscripten_async_wget_data("../../assets/nim_sdl_test.png"
     , proc(data: pointer, sz: cint) =
         echo "emscripten_async_wget_data Success. nim_sdl_test.png"
@@ -73,7 +77,9 @@ proc loadData() =
         echo "emscripten_async_wget_data Falt. nim_sdl_test.png"
   )
 
+  # PNG画像の読込完了時のコールバック
   proc loadSuccess(tex: var TexturePtr, data: pointer, sz: cint) =
+    # メモリからPNG画像を読込、Textureに変換する
     let rw: RWopsPtr = rwFromMem(data, sz)
     tex = img.loadTexture_RW(renderer, rw, 1)
     if tex != nil:
@@ -82,6 +88,7 @@ proc loadData() =
         echo "img.loadTexture_RW Fault."
         return
 
+    # 2つの画像のロードが完了したら、メインループで実行される処理を renderScreen に切替える
     inc(loadCount)
     if loadCount == 2:
       mainLoop = renderScreen
